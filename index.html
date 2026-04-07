@@ -41,10 +41,8 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), var(--bg-light)), url('malea_map_bg_light_1775554945244.png');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.6;
+            background-color: var(--bg-light);
+            opacity: 1;
         }
 
         nav {
@@ -72,16 +70,10 @@
             text-decoration: none;
         }
 
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 900;
+        .logo img {
+            height: 48px;
+            width: auto;
+            mix-blend-mode: multiply;
         }
 
         .nav-links {
@@ -444,8 +436,7 @@
 
     <nav>
         <a href="index.html" class="logo">
-            <div class="logo-icon">M</div>
-            MALEA
+            <img src="Malea_logo_clean.png" alt="Malea Logo">
         </a>
         <div class="nav-links">
             <div class="lang-switcher">
@@ -560,9 +551,8 @@
 
     <footer>
         <div class="footer-info">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">M</div>
-                MALEA
+            <a href="index.html" class="logo" style="margin-bottom: 20px;">
+                <img src="Malea_logo_clean.png" alt="Malea Logo">
             </a>
             <p data-i18n="footer-catchy">Redéfinissez votre façon de vivre la ville avec Malea.</p>
         </div>

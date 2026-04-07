@@ -1,43 +1,44 @@
-# Malea Policy & Terms of Use
+# Malea | Vos commerces tout autour de vous
 
-This repository contains the legal documentation for the **Malea** application, including the Privacy Policy and the General Terms of Use (CGU). 
+Malea est une plateforme premium conçue pour redéfinir la découverte locale. Elle permet aux utilisateurs de retrouver tous les commerces et professionnels (restaurants, boutiques, freelances) à proximité avec une expérience fluide et intuitive.
 
-The site is designed with a premium aesthetic and features a custom multi-language system (French and English).
+Ce dépôt contient le site marketing principal ainsi que la documentation légale de l'application.
 
-## 🚀 Features
+## 🚀 Fonctionnalités Clés
 
-- **Multi-language Support**: Seamless switching between French and English using a custom lightweight JavaScript translation engine.
-- **Responsive Design**: Optimized for all devices using modern CSS and the "Outfit" typography.
-- **Premium UI**: Clean, card-based layout with subtle animations and glassmorphism-inspired elements.
-- **Persistent Preferences**: User language selection is saved in `localStorage`.
+- **Landing Page Premium** : Interface moderne avec carrousel dynamique et design épuré.
+- **Portails de Recherche Spécialisés** : 6 univers dédiés (Alimentaire, High-Tech, Mode, Beauté, Professionnels, Restaurants).
+- **Intégration Maps en Temps Réel** : Visualisation géographique précise avec la fonction "Rechercher dans cette zone".
+- **Centre d'Assistance Avancé** : FAQ multi-niveaux et système de support intégré.
+- **Système de Traduction (FR/EN)** : Moteur de traduction ultra-léger en Vanilla JS avec support du LocalStorage.
+- **Responsive Design** : Expérience optimisée sur mobile, tablette et desktop.
 
-## 📁 Project Structure
+## 📁 Structure du Projet
 
 ```text
 .
-├── index.html          # Privacy Policy (Politique de Confidentialité)
-├── malea-cgu.html      # Terms of Use (Conditions Générales d'Utilisation)
-├── translations.js     # Shared translation logic and dictionary (FR/EN)
-└── README.md           # Project documentation
+├── index.html              # Page d'accueil (Landing Page marketing)
+├── policy.html             # Politique de Confidentialité
+├── malea-cgu.html          # Conditions Générales d'Utilisation
+├── translations.js         # Moteur de traduction et dictionnaire partagé
+├── malea_map_mockup.png    # Asset visuel (Mockup de l'interface Map)
+└── README.md               # Documentation du projet
 ```
 
-## 🛠️ Technology Stack
+## 🛠️ Stack Technique
 
-- **HTML5**: Semantic structure.
-- **CSS3**: Custom styling with variables and flexbox/grid.
-- **Vanilla JavaScript**: Lightweight translation handling and UI interactions.
-- **Google Fonts**: "Outfit" font family.
+- **HTML5** : Structure sémantique et SEO-ready.
+- **CSS3** : Design premium (glassmorphism, variables CSS, Flexbox/Grid).
+- **Vanilla JavaScript** : Logique de carrousel et système de traduction sans dépendances.
+- **Outfit Typography** : Police de caractères premium via Google Fonts.
 
-## 🌍 Translation System
+## 🌍 Système de Traduction
 
-The project uses a custom `translations.js` file that contains all strings for the site. 
-- Elements are marked for translation using the `data-i18n` attribute.
-- Page titles are updated via the `data-i18n-page-title` attribute on the `<body>` tag.
-- Language preference is automatically detected from the browser or retrieved from local storage.
+Le projet utilise un système personnalisé via `translations.js` :
+- Les éléments sont marqués avec l'attribut `data-i18n`.
+- Les titres de page sont gérés dynamiquement via `data-i18n-page-title` sur la balise `<body>`.
+- Préférence de langue persistante pour une expérience utilisateur optimale.
 
-### Adding a new language
-To add a new language, simply update the `translations` object in `translations.js` with the new key (e.g., `es` for Spanish) and add a button to the language switcher in the HTML files.
+## 📄 Licence
 
-## 📄 License
-
-&copy; 2026 Malea App. All rights reserved.
+&copy; 2026 Malea App. Tous droits réservés.
