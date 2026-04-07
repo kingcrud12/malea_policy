@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malea | Tout à portée de mains</title>
+    <title data-i18n="landing-title">Malea | L'exceptionnel tout près</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #FFFFFF;
+            --primary: #1D1D1F;
             --accent: #D4AF37;
-            /* Sophisticated Gold */
-            --bg-dark: #0A0A0A;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border-glass: rgba(255, 255, 255, 0.1);
-            --text-secondary: #A0A0A0;
+            --bg-light: #FFFFFF;
+            --bg-soft: #F5F5F7;
+            --glass: rgba(255, 255, 255, 0.7);
+            --border-glass: rgba(0, 0, 0, 0.05);
+            --text-secondary: #86868b;
             --font-main: 'Outfit', sans-serif;
         }
 
@@ -27,7 +27,7 @@
 
         body {
             font-family: var(--font-main);
-            background-color: var(--bg-dark);
+            background-color: var(--bg-light);
             color: var(--primary);
             overflow-x: hidden;
             line-height: 1.6;
@@ -40,34 +40,36 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background-image: linear-gradient(to bottom, rgba(10, 10, 10, 0.4), var(--bg-dark)), url('malea_landing_hero_bg_1775554282445.png');
+            z-index: -2;
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), var(--bg-light)), url('malea_map_bg_light_1775554945244.png');
             background-size: cover;
             background-position: center;
-            filter: brightness(0.8);
+            opacity: 0.6;
         }
 
-        /* --- HEADER --- */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 60px;
+            padding: 20px 60px;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 100;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
-            backdrop-filter: blur(10px);
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 900;
-            letter-spacing: -1.5px;
+            letter-spacing: -1px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            color: var(--primary);
+            text-decoration: none;
         }
 
         .logo-icon {
@@ -78,10 +80,42 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: black;
+            color: white;
+            font-weight: 900;
         }
 
-        /* --- HERO SECTION --- */
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 4px;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 4px;
+            border-radius: 10px;
+        }
+
+        .lang-btn {
+            border: none;
+            background: none;
+            padding: 6px 12px;
+            border-radius: 7px;
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- HERO --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -89,232 +123,485 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 900px;
             padding: 0 20px;
+            animation: fadeInBody 1s ease-out;
+        }
+
+        @keyframes fadeInBody {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h1 {
-            font-size: clamp(48px, 8vw, 96px);
+            font-size: clamp(40px, 8vw, 84px);
             font-weight: 900;
-            line-height: 0.95;
-            letter-spacing: -4px;
-            margin-bottom: 24px;
-            background: linear-gradient(to bottom, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+            color: var(--primary);
         }
 
         .hero p {
-            font-size: clamp(18px, 2vw, 22px);
-            color: var(--text-secondary);
+            font-size: clamp(16px, 2vw, 20px);
+            color: #424245;
             max-width: 700px;
-            margin-bottom: 40px;
-            font-weight: 400;
+            margin: 0 auto 40px;
+            font-weight: 500;
         }
 
         .cta-group {
             display: flex;
-            gap: 20px;
+            gap: 15px;
+            justify-content: center;
         }
 
         .btn {
-            padding: 16px 32px;
-            border-radius: 40px;
-            font-weight: 800;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 700;
             text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            font-size: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 15px;
         }
 
         .btn-primary {
             background: var(--primary);
-            color: black;
+            color: white;
             border: 2px solid var(--primary);
         }
 
         .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+            background: #333;
         }
 
         .btn-secondary {
-            border: 2px solid var(--border-glass);
+            border: 2px solid var(--primary);
             color: var(--primary);
-            backdrop-filter: blur(10px);
+            background: transparent;
         }
 
         .btn-secondary:hover {
-            background: var(--glass);
-            border-color: var(--primary);
+            background: rgba(0, 0, 0, 0.05);
         }
 
-        /* --- FEATURES --- */
-        .features {
-            padding: 100px 60px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+        .carousel-text-overlay {
+            position: absolute;
+            bottom: 60px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .catchy-phrase {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--accent);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+            position: absolute;
+            width: 100%;
+            left: 0;
+        }
+
+        .catchy-phrase.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- SECTIONS COMMON --- */
+        section {
+            padding: 120px 60px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .card {
-            background: var(--glass);
-            border: 1px solid var(--border-glass);
-            padding: 50px;
-            border-radius: 40px;
-            backdrop-filter: blur(20px);
-            transition: all 0.4s ease;
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
         }
 
-        .card:hover {
-            border-color: var(--accent);
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .card h3 {
-            font-size: 24px;
-            font-weight: 800;
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: -2px;
             margin-bottom: 16px;
         }
 
-        .card p {
+        .section-header p {
             color: var(--text-secondary);
-            font-size: 16px;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .icon-circle {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 12px;
+        /* --- PORTALS GRID --- */
+        .portals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .portal-card {
+            background: var(--bg-soft);
+            padding: 40px;
+            border-radius: 40px;
+            transition: all 0.5s ease;
+            border: 1px solid transparent;
+            text-align: center;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-10px);
+            background: white;
+            border-color: var(--accent);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+        }
+
+        .portal-icon {
+            font-size: 40px;
             margin-bottom: 24px;
+            display: block;
+        }
+
+        .portal-card h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .portal-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* --- MAPS SECTION --- */
+        .maps-showcase {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 24px;
+            gap: 80px;
+            background: var(--bg-soft);
+            border-radius: 60px;
+            padding: 80px;
+            margin-bottom: 120px;
+        }
+
+        .maps-text {
+            flex: 1;
+        }
+
+        .maps-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .maps-image img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- SUPPORT SECTION --- */
+        .support-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .faq-list {
+            list-style: none;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 24px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-glass);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+        }
+
+        .support-cta {
+            background: var(--primary);
+            color: white;
+            padding: 60px;
+            border-radius: 40px;
+            text-align: center;
+        }
+
+        .support-cta h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
         }
 
         /* --- FOOTER --- */
         footer {
             padding: 80px 60px;
-            border-top: 1px solid var(--border-glass);
+            background: var(--bg-soft);
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
-            background: black;
+            gap: 40px;
+        }
+
+        .footer-info p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            max-width: 300px;
+            margin-top: 15px;
+            font-weight: 500;
         }
 
         .footer-links {
             display: flex;
-            gap: 40px;
+            gap: 60px;
         }
 
-        .footer-links a {
-            color: var(--text-secondary);
+        .link-group h4 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+        }
+
+        .link-group ul {
+            list-style: none;
+        }
+
+        .link-group li {
+            margin-bottom: 12px;
+        }
+
+        .link-group a {
             text-decoration: none;
-            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
-        .footer-links a:hover {
+        .link-group a:hover {
             color: var(--primary);
         }
 
-        .copyright {
-            color: #333;
-            font-weight: 800;
-            font-size: 14px;
-        }
-
-        @media (max-width: 900px) {
-
-            nav,
-            .features,
-            footer {
-                padding: 30px 20px;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-group {
-                flex-direction: column;
-                width: 100%;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            h1 {
-                letter-spacing: -2px;
-            }
+        @media (max-width: 1000px) {
+            .portals-grid, .support-section { grid-template-columns: 1fr; }
+            .maps-showcase { flex-direction: column; padding: 40px; text-align: center; }
+            nav { padding: 15px 20px; }
+            section { padding: 80px 20px; }
         }
     </style>
 </head>
 
-<body>
+<body data-i18n-page-title="landing-title">
 
     <div class="hero-bg"></div>
 
     <nav>
-        <div class="logo">
+        <a href="index.html" class="logo">
             <div class="logo-icon">M</div>
             MALEA
-        </div>
-        <div class="footer-links">
-            <a href="mailto:support@malea.app">Support</a>
+        </a>
+        <div class="nav-links">
+            <div class="lang-switcher">
+                <button class="lang-btn" onclick="switchLanguage('fr')" data-lang="fr">FR</button>
+                <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">EN</button>
+            </div>
+            <a href="#support" class="btn btn-secondary" style="padding: 8px 16px; font-size: 13px;" data-i18n="nav-support">Assistance</a>
         </div>
     </nav>
 
     <header class="hero">
-        <h1>Tout<br>à portée de mains.</h1>
-        <p>Malea connecte les citadins avec les meilleurs commerces, boutiques et services de leur
-            ville. Une expérience fluide, guidée et sociale.</p>
-        <div class="cta-group">
-            <a href="#" class="btn btn-primary">App Store</a>
-            <a href="#" class="btn btn-secondary">Google Play</a>
+        <div class="carousel-container">
+            <div class="carousel-slide active" style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_carousel_1_light_1775554967986.png');"></div>
+            <div class="carousel-slide" style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_carousel_2_light_1775554989045.png');"></div>
+            <div class="carousel-slide" style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_carousel_3_light_1775555009695.png');"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 data-i18n="hero-title">La ville,<br>tout autour de vous.</h1>
+            <p data-i18n="hero-subtitle">Retrouvez tous les commerces et professionnels à proximité. Découvrez votre ville autrement avec une expérience fluide et intuitive.</p>
+            <div class="cta-group">
+                <a href="#" class="btn btn-primary">App Store</a>
+                <a href="#" class="btn btn-secondary">Google Play</a>
+            </div>
+        </div>
+
+        <div class="carousel-text-overlay">
+            <div class="catchy-phrase active" data-i18n="carousel-1">Découvrez votre ville autrement.</div>
+            <div class="catchy-phrase" data-i18n="carousel-2">Vos commerces favoris, partout avec vous.</div>
+            <div class="catchy-phrase" data-i18n="carousel-3">Les meilleurs experts à chaque coin de rue.</div>
         </div>
     </header>
 
-    <section class="features">
-        <div class="card">
-            <div class="icon-circle">✨</div>
-            <h3>Découvrez</h3>
-            <p>Accédez à une sélection curatée des meilleurs établissements. Mode, Sport, High-Tech ou Logements de
-                luxe.</p>
+    <section id="portals">
+        <div class="section-header">
+            <h2 data-i18n="portal-title">Nos Portails de Découverte</h2>
+            <p data-i18n="portal-subtitle">Explorez des univers spécialisés conçus pour répondre à tous vos besoins.</p>
         </div>
-        <div class="card">
-            <div class="icon-circle">📍</div>
-            <h3>Naviguez</h3>
-            <p>Un calcul d'itinéraire intelligent pour vous rendre directement là où l'exceptionnel vous attend.</p>
+        <div class="portals-grid">
+            <div class="portal-card">
+                <span class="portal-icon">🍎</span>
+                <h3 data-i18n="cat-food-title">Alimentaire</h3>
+                <p data-i18n="cat-food-desc">Supermarchés, boulangeries locales et épiceries fines.</p>
+            </div>
+            <div class="portal-card">
+                <span class="portal-icon">💻</span>
+                <h3 data-i18n="cat-tech-title">High-Tech</h3>
+                <p data-i18n="cat-tech-desc">Boutiques Fnac, Darty, Apple et SAV spécialisés.</p>
+            </div>
+            <div class="portal-card">
+                <span class="portal-icon">👗</span>
+                <h3 data-i18n="cat-fashion-title">Mode</h3>
+                <p data-i18n="cat-fashion-desc">Prêt-à-porter, chaussures et bijouteries de luxe.</p>
+            </div>
+            <div class="portal-card">
+                <span class="portal-icon">✨</span>
+                <h3 data-i18n="cat-beauty-title">Beauté & Santé</h3>
+                <p data-i18n="cat-beauty-desc">Salons de coiffure, spas, soins et pharmacies.</p>
+            </div>
+            <div class="portal-card">
+                <span class="portal-icon">💼</span>
+                <h3 data-i18n="cat-pro-title">Professionnels</h3>
+                <p data-i18n="cat-pro-desc">Médecins, avocats, photographes et développeurs.</p>
+            </div>
+            <div class="portal-card">
+                <span class="portal-icon">🍽️</span>
+                <h3 data-i18n="cat-rest-title">Restaurants</h3>
+                <p data-i18n="cat-rest-desc">Gastronomie, fast-food et terrasses conviviales.</p>
+            </div>
         </div>
-        <div class="card">
-            <div class="icon-circle">🤝</div>
-            <h3>Partagez</h3>
-            <p>Connectez-vous avec vos amis, partagez vos meilleures adresses et explorez leurs favoris en temps réel.
-            </p>
+    </section>
+
+    <section id="maps">
+        <div class="maps-showcase">
+            <div class="maps-text">
+                <h2 data-i18n="map-section-title">La ville en temps réel</h2>
+                <p data-i18n="map-section-desc" style="margin-bottom: 30px;">L'intégration Google Maps vous permet une visualisation instantanée de tout ce qui vous entoure.</p>
+                <a href="#" class="btn btn-primary" data-i18n="map-btn-search">Rechercher dans cette zone</a>
+            </div>
+            <div class="maps-image">
+                <img src="malea_map_mockup.png" alt="Map Interface">
+            </div>
+        </div>
+    </section>
+
+    <section id="support">
+        <div class="section-header">
+            <h2 data-i18n="support-title">Support & Excellence</h2>
+            <p data-i18n="support-welcome">Bienvenue sur notre centre d'assistance personnalisé.</p>
+        </div>
+        <div class="support-section">
+            <div>
+                <h3 data-i18n="support-faq-title" style="margin-bottom: 30px;">Questions Fréquentes</h3>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <span data-i18n="support-faq-1">Comment signaler un problème ?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-item">
+                        <span data-i18n="support-faq-2">Mes données sont-elles sécurisées ?</span>
+                        <span>+</span>
+                    </div>
+                </div>
+            </div>
+            <div class="support-cta">
+                <h3 data-i18n="cat-pro-title">Professionnels</h3>
+                <p style="margin-bottom: 30px; opacity: 0.8;" data-i18n="portal-subtitle">Tout ce dont vous avez besoin, des commerces de bouche aux experts indépendants, à portée de main.</p>
+                <a href="mailto:support@malea.app" class="btn btn-secondary" style="border-color: white; color: white;" data-i18n="nav-contact">Contactez-nous</a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div>
-            <div class="logo" style="margin-bottom: 12px;">MALEA</div>
-            <p style="color: #444; font-size: 14px; max-width: 300px;">Luxe, découverte et simplicité. Redéfinissez
-                votre façon de vivre la ville.</p>
+        <div class="footer-info">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">M</div>
+                MALEA
+            </a>
+            <p data-i18n="footer-catchy">Redéfinissez votre façon de vivre la ville avec Malea.</p>
         </div>
         <div class="footer-links">
-            <a href="privacy_policy.html">Confidentialité</a>
-            <a href="cgu.html">Conditions</a>
-            <a href="mailto:support@malea.app">Contact</a>
+            <div class="link-group">
+                <h4 data-i18n="nav-support">Aide</h4>
+                <ul>
+                    <li><a href="mailto:support@malea.app">support@malea.app</a></li>
+                    <li><a href="mailto:legal@malea.app">legal@malea.app</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <h4 data-i18n="nav-privacy">Légal</h4>
+                <ul>
+                    <li><a href="policy.html" data-i18n="nav-privacy">Confidentialité</a></li>
+                    <li><a href="malea-cgu.html" data-i18n="nav-cgu">Services & CGU</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="width: 100%; border-top: 1px solid var(--border-glass); padding-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+            <p style="font-size: 13px; color: var(--text-secondary);">&copy; 2026 Malea App. <span data-i18n="footer-rights">Tous droits réservés.</span></p>
         </div>
     </footer>
 
+    <script src="translations.js"></script>
+    <script>
+        // Carousel Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const phrases = document.querySelectorAll('.catchy-phrase');
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            phrases[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+            phrases[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 5000);
+    </script>
 </body>
 
 </html>
