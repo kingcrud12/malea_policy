@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politique de Confidentialité | Malea</title>
+    <title data-i18n="index-title">Politique de Confidentialité | Malea</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -38,6 +38,56 @@
         header {
             text-align: center;
             margin-bottom: 60px;
+            position: relative;
+        }
+
+        .nav-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            background: #eee;
+            padding: 4px;
+            border-radius: 12px;
+        }
+
+        .lang-btn {
+            border: none;
+            background: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn-cgu {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .btn-cgu:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
         }
 
         .logo-text {
@@ -76,7 +126,7 @@
             font-weight: 800;
             margin-bottom: 20px;
             display: flex;
-            alignment-items: center;
+            align-items: center;
             gap: 12px;
         }
 
@@ -150,36 +200,48 @@
             .card {
                 padding: 24px;
             }
+            
+            .nav-controls {
+                flex-direction: column;
+                gap: 20px;
+            }
         }
     </style>
 </head>
 
-<body>
+<body data-i18n-page-title="index-title">
 
     <div class="container">
         <header>
+            <div class="nav-controls">
+                <div class="lang-switcher">
+                    <button class="lang-btn" onclick="switchLanguage('fr')" data-lang="fr">FR</button>
+                    <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">EN</button>
+                </div>
+                <a href="malea-cgu.html" class="btn-cgu" data-i18n="nav-cgu">Voir les CGU</a>
+            </div>
             <div class="logo-text">MALÉA</div>
-            <h1>Politique de Confidentialité</h1>
-            <div class="update-date">Mise à jour le 07 Avril 2026</div>
+            <h1 data-i18n="index-h1">Politique de Confidentialité</h1>
+            <div class="update-date" data-i18n="index-update">Mise à jour le 07 Avril 2026</div>
         </header>
 
         <main>
             <section class="card">
-                <h2><span>01.</span> Introduction</h2>
-                <p>Chez Malea, la protection de votre vie privée est au cœur de notre engagement. Cette politique
+                <h2><span>01.</span> <span data-i18n="section-1-title">Introduction</span></h2>
+                <p data-i18n="section-1-content">Chez Malea, la protection de votre vie privée est au cœur de notre engagement. Cette politique
                     détaille de manière transparente comment nous collectons et utilisons vos données pour vous offrir
                     une expérience d'exception.</p>
             </section>
 
             <section class="card">
-                <h2><span>02.</span> Données Collectées</h2>
+                <h2 data-i18n="section-2-title"><span>02.</span> Données Collectées</h2>
                 <div class="data-list">
 
                     <div class="data-item">
                         <div class="icon-box">📍</div>
                         <div class="item-content">
-                            <h3>Géolocalisation</h3>
-                            <p>Nous utilisons votre position en temps réel uniquement pour vous permettre de découvrir
+                            <h3 data-i18n="item-geo-title">Géolocalisation</h3>
+                            <p data-i18n="item-geo-content">Nous utilisons votre position en temps réel uniquement pour vous permettre de découvrir
                                 les commerces autour de vous (supermarchés, boutiques de vêtements, clubs de sport et
                                 loisirs).</p>
                         </div>
@@ -188,8 +250,8 @@
                     <div class="data-item">
                         <div class="icon-box">📱</div>
                         <div class="item-content">
-                            <h3>Numéro de téléphone</h3>
-                            <p>Utilisé exclusivement pour renforcer la sécurité de votre compte via l'authentification à
+                            <h3 data-i18n="item-phone-title">Numéro de téléphone</h3>
+                            <p data-i18n="item-phone-content">Utilisé exclusivement pour renforcer la sécurité de votre compte via l'authentification à
                                 double facteur (MFA), garantissant que vous seul accédez à vos services.</p>
                         </div>
                     </div>
@@ -197,8 +259,8 @@
                     <div class="data-item">
                         <div class="icon-box">👤</div>
                         <div class="item-content">
-                            <h3>Identité (Genre & Âge)</h3>
-                            <p>Ces informations nous aident à sécuriser votre identité numérique et à personnaliser
+                            <h3 data-i18n="item-identity-title">Identité (Genre & Âge)</h3>
+                            <p data-i18n="item-identity-content">Ces informations nous aident à sécuriser votre identité numérique et à personnaliser
                                 l'interface pour qu'elle réponde parfaitement à vos besoins.</p>
                         </div>
                     </div>
@@ -207,23 +269,40 @@
             </section>
 
             <section class="card">
-                <h2><span>03.</span> Sécurité</h2>
-                <p>Toutes vos données sont chiffrées et stockées de manière sécurisée sur nos serveurs. Nous appliquons
-                    les standards de sécurité les plus rigoureux pour prévenir tout accès non autorisé.</p>
+                <h2 data-i18n="section-3-title"><span>03.</span> Vos Droits (RGPD)</h2>
+                <p data-i18n="section-3-content">Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits fondamentaux suivants :</p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li data-i18n="right-1"><strong>Droit d'accès</strong> : Obtenir une copie de vos données.</li>
+                    <li data-i18n="right-2"><strong>Droit de rectification</strong> : Corriger des informations inexactes.</li>
+                    <li data-i18n="right-3"><strong>Droit à l'effacement</strong> : Demander la suppression de votre compte et de vos données (Droit à l'oubli).</li>
+                    <li data-i18n="right-4"><strong>Droit à la portabilité</strong> : Recevoir vos données dans un format structuré.</li>
+                    <li data-i18n="right-5"><strong>Droit d'opposition</strong> : Vous opposer à certains traitements de vos données.</li>
+                </ul>
+                <p><span data-i18n="section-3-contact">Pour exercer ces droits, contactez-nous simplement à :</span> <strong>support@malea.app</strong></p>
             </section>
 
             <section class="card">
-                <h2><span>04.</span> Contact</h2>
-                <p>Pour toute question relative à vos données personnelles, notre équipe est à votre entière disposition
-                    à l'adresse suivante : <strong>support@malea.app</strong></p>
+                <h2 data-i18n="section-4-title"><span>04.</span> Conservation des Données</h2>
+                <p data-i18n="section-4-content">Vos données personnelles sont conservées uniquement pendant la durée nécessaire à la réalisation des finalités pour lesquelles elles ont été collectées (durée de vie de votre compte utilisateur), augmentée des délais de prescription légaux en vigueur.</p>
+            </section>
+
+            <section class="card">
+                <h2 data-i18n="section-4-title"><span>05.</span> Sécurité & Hébergement</h2>
+                <p data-i18n="section-4-content">Toutes vos données sont chiffrées et stockées de manière sécurisée sur les infrastructures Firebase (Google Cloud Platform). Nous appliquons les standards de sécurité les plus rigoureux pour prévenir tout accès non autorisé.</p>
+            </section>
+
+            <section class="card">
+                <h2 data-i18n="section-6-title"><span>06.</span> Responsable du Traitement</h2>
+                <p><span data-i18n="section-6-content">Le responsable du traitement des données est l'Équipe Malea. Pour toute question relative à la gestion de vos données privées, contactez-nous à :</span> <strong>support@malea.app</strong></p>
             </section>
         </main>
 
         <footer>
-            &copy; 2026 Malea App. Tous droits réservés.
+            &copy; 2026 Malea App. <span data-i18n="footer-rights">Tous droits réservés.</span>
         </footer>
     </div>
 
+    <script src="translations.js"></script>
 </body>
 
 </html>

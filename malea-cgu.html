@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="cgu-title">Conditions Générales d'Utilisation | Malea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --text-main: #000000;
+            --text-secondary: #6C757D;
+            --accent: #000000;
+            --border-radius: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .nav-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            background: #eee;
+            padding: 4px;
+            border-radius: 12px;
+        }
+
+        .lang-btn {
+            border: none;
+            background: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn-back {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            letter-spacing: -1.5px;
+        }
+
+        .update-date {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2 span {
+            font-size: 20px;
+            opacity: 0.5;
+        }
+
+        p {
+            font-size: 17px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .nav-controls {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body data-i18n-page-title="cgu-title">
+
+    <div class="container">
+        <header>
+            <div class="nav-controls">
+                <div class="lang-switcher">
+                    <button class="lang-btn" onclick="switchLanguage('fr')" data-lang="fr">FR</button>
+                    <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">EN</button>
+                </div>
+                <a href="index.html" class="btn-back" data-i18n="nav-privacy">Politique de Confidentialité</a>
+            </div>
+            <div class="logo-text">MALEA</div>
+            <h1 data-i18n="cgu-h1">Conditions Générales d'Utilisation</h1>
+            <div class="update-date" data-i18n="cgu-version">Version 1.0 — 07 Avril 2026</div>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2 data-i18n="cgu-section-1-title"><span>01.</span> Objet & Services</h2>
+                <p data-i18n="cgu-section-1-p1">Malea est une plateforme premium dédiée à l'exploration et à la découverte de commerces et services d'exception. Nous regroupons pour vous les meilleures adresses dans les domaines de la Mode, du Sport, du High-Tech et des Logements.</p>
+                <p data-i18n="cgu-section-1-p2">L'utilisation de l'application implique l'acceptation pleine et entière des présentes conditions générales d'utilisation.</p>
+            </section>
+
+            <section class="card">
+                <h2 data-i18n="cgu-section-2-title"><span>02.</span> Accès au Service</h2>
+                <p data-i18n="cgu-section-2-p1">L'accès à Malea est gratuit, toutefois certaines fonctionnalités (favoris, amis, notifications personnalisées) nécessitent la création d'un compte utilisateur.</p>
+                <p data-i18n="cgu-section-2-p2">Pour garantir la sécurité de votre compte, Malea utilise une authentification à double facteur (MFA) via votre numéro de téléphone. Vous êtes responsable du maintien de la confidentialité de vos accès.</p>
+            </section>
+
+            <section class="card">
+                <h2 data-i18n="cgu-section-3-title"><span>03.</span> Propriété Intellectuelle</h2>
+                <p data-i18n="cgu-section-3-p1">La marque "Malea", son logo, ses interfaces graphiques et son code informatique sont la propriété exclusive de l'Éditeur. Toute reproduction, même partielle, est strictement interdite sans autorisation préalable.</p>
+            </section>
+
+            <section class="card">
+                <h2 data-i18n="cgu-section-4-title"><span>04.</span> Responsabilité & Données Tiers</h2>
+                <p data-i18n="cgu-section-4-p1">Malea utilise des technologies de pointe et des API tierces (notamment Google Places et Directions) pour vous fournir des informations précises sur les commerces et les itinéraires.</p>
+                <p data-i18n="cgu-section-4-p2">Bien que nous nous efforcions de garantir la qualité des données, Malea ne peut être tenue responsable des inexactitudes mineures (horaires modifiés, établissements fermés temporairement) provenant de ces sources extérieures.</p>
+            </section>
+
+            <section class="card">
+                <h2 data-i18n="cgu-section-5-title"><span>05.</span> Contenu Généré par l'Utilisateur (UGC)</h2>
+                <p data-i18n="cgu-section-5-p1">Malea propose des fonctions sociales permettant de partager du contenu (messages, profils d'amis). Vous êtes seul responsable du contenu que vous publiez.</p>
+                <p data-i18n="cgu-section-5-p2">Malea applique une politique de <strong>tolérance zéro</strong> pour tout contenu haineux, discriminatoire, violent, harcelant ou à caractère pornographique. Tout manquement entraînera une suppression immédiate du contenu.</p>
+            </section>
+
+            <section class="card">
+                <h2 data-i18n="cgu-section-6-title"><span>06.</span> Modération et Signalement</h2>
+                <p data-i18n="cgu-section-6-p1">Conformément aux exigences d'Apple et Google, un dispositif de signalement est mis à la disposition des utilisateurs au sein de l'application.</p>
+                <p data-i18n="cgu-section-6-p2">Malea s'engage à traiter tout signalement de contenu abusif et à le supprimer sous <strong>24 heures</strong> si l'infraction est constatée. Les utilisateurs ne respectant pas ces règles de communauté seront définitivement bannis et leur compte sera supprimé sans préavis.</p>
+            </section>
+
+            <section class="card">
+                <h2 data-i18n="cgu-section-7-title"><span>07.</span> Données Personnelles (RGPD)</h2>
+                <p data-i18n="cgu-section-7-p1">Malea accorde une importance capitale à la protection de vos données privées. Le traitement de vos données est effectué conformément au Règlement Général sur la Protection des Données (RGPD).</p>
+                <p><span data-i18n="cgu-section-7-p2">En utilisant l'application, vous consentez à la collecte et au traitement de vos données (géolocalisation, téléphone, identité) tels que détaillés dans notre</span> <strong><a href="index.html" style="color: black; text-decoration: underline;" data-i18n="cgu-section-7-link">Politique de Confidentialité</a></strong>. <span data-i18n="cgu-section-7-p3">Vous y trouverez également les modalités pour exercer vos droits d'accès, de rectification et de suppression.</span></p>
+            </section>
+
+            <section class="card">
+                <h2 data-i18n="cgu-section-8-title"><span>08.</span> Résiliation & Modification</h2>
+                <p data-i18n="cgu-section-8-p1">L'Éditeur se réserve le droit de modifier les présentes conditions à tout moment pour les adapter aux évolutions du service. Vous pouvez supprimer votre compte à tout moment depuis les réglages de l'application.</p>
+            </section>
+
+            <section class="card">
+                <h2 data-i18n="cgu-section-9-title"><span>09.</span> Contact</h2>
+                <p><span data-i18n="cgu-section-9-p1">Pour toute question relative aux présentes conditions, vous pouvez nous contacter à l'adresse officielle :</span> <strong>legal@malea.app</strong></p>
+            </section>
+        </main>
+
+        <footer>
+            &copy; 2026 Malea App. <span data-i18n="footer-rights">Tous droits réservés.</span>
+        </footer>
+    </div>
+
+    <script src="translations.js"></script>
+</body>
+
+</html>            &copy; 2026 Malea App. Tous droits réservés.
+        </footer>
+    </div>
+
+</body>
+
+</html>
