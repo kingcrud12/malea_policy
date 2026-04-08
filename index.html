@@ -715,23 +715,40 @@
         // Form Submission Handler
         function handleRegistration(event) {
             event.preventDefault();
+            
+            // 1. Safety check for translations
+            if (typeof translations === 'undefined') {
+                console.warn("Translations not found, using default language.");
+            }
+
             const lang = localStorage.getItem('malea_lang') || 'fr';
-            const name = document.getElementById('reg-name').value || "";
-            const email = document.getElementById('reg-email').value || "";
             
-            // Fetch translated templates with fallbacks to avoid crashes
-            let subjectTemplate = (translations[lang] && translations[lang]["mail-subject"]) 
-                || "Inscription Campagne Test Android - Malea";
-            let bodyTemplate = (translations[lang] && translations[lang]["mail-body"]) 
-                || "Bonjour,\n\nJe souhaite m'inscrire à la campagne de test Android.\n\nNom: {name}\nEmail: {email}";
+            // 2. Safety check for form elements
+            const nameEl = document.getElementById('reg-name');
+            const emailEl = document.getElementById('reg-email');
             
-            // Replace placeholders safely
+            if (!nameEl || !emailEl) {
+                console.error("Form elements not found in the DOM.");
+                return;
+            }
+
+            const name = nameEl.value || "";
+            const email = emailEl.value || "";
+            
+            // 3. Fetch translated templates with deep fallbacks
+            const t = (typeof translations !== 'undefined' && translations[lang]) ? translations[lang] : 
+                     (typeof translations !== 'undefined' ? translations['fr'] : {});
+            
+            const subjectTemplate = t["mail-subject"] || "Inscription Campagne Test Android - Malea";
+            const bodyTemplate = t["mail-body"] || "Bonjour,\n\nJe souhaite m'inscrire à la campagne de test Android.\n\nNom: {name}\nEmail: {email}";
+            
+            // 4. Safe replacement
             const subject = encodeURIComponent(subjectTemplate);
             const body = encodeURIComponent(bodyTemplate.replace("{name}", name).replace("{email}", email));
             
             const mailtoUrl = `mailto:dipitay@gmail.com?subject=${subject}&body=${body}`;
             
-            // Robust way to trigger mailto
+            // 5. Trigger mailto via robust link method
             const link = document.createElement('a');
             link.href = mailtoUrl;
             document.body.appendChild(link);
