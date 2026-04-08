@@ -54,15 +54,10 @@
             width: 100%;
             top: 0;
             z-index: 100;
-            background: transparent;
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
             background: var(--glass);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-glass);
-            padding: 15px 60px;
+            transition: all 0.3s ease;
         }
 
         .logo {
@@ -142,8 +137,6 @@
             height: 100%;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
-            background-size: cover;
-            background-position: center;
         }
 
         .carousel-slide.active {
@@ -237,7 +230,6 @@
             letter-spacing: -3px;
             margin-bottom: 20px;
             color: var(--primary);
-            text-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .hero p {
@@ -538,17 +530,6 @@
     </nav>
 
     <header class="hero">
-        <div class="carousel-container">
-            <div class="carousel-slide active"
-                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0) 50%, var(--bg-light) 95%), url('hero_bg_1.png');">
-            </div>
-            <div class="carousel-slide"
-                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0) 50%, var(--bg-light) 95%), url('hero_bg_2.png');">
-            </div>
-            <div class="carousel-slide"
-                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0) 50%, var(--bg-light) 95%), url('hero_bg_3.png');">
-            </div>
-        </div>
 
         <div class="hero-content-wrapper">
             <!-- Slide 1: Main Marketing -->
@@ -707,26 +688,26 @@
     <script>
         // Carousel Logic
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
         const contentSlides = document.querySelectorAll('.hero-content-slide');
         const phrases = document.querySelectorAll('.catchy-phrase');
 
         function nextSlide() {
             // Remove active from current
-            slides[currentSlide].classList.remove('active');
             phrases[currentSlide].classList.remove('active');
             if (contentSlides[currentSlide % contentSlides.length]) {
                 contentSlides[currentSlide % contentSlides.length].classList.remove('active');
             }
 
             // Increment
-            currentSlide = (currentSlide + 1) % slides.length;
+            currentSlide = (currentSlide + 1) % contentSlides.length; // Cycle based on content slides
+            
+            // Adjust phrases index if needed (if length doesn't match)
+            const phraseIndex = currentSlide % phrases.length;
 
             // Add active to next
-            slides[currentSlide].classList.add('active');
-            phrases[currentSlide].classList.add('active');
-            if (contentSlides[currentSlide % contentSlides.length]) {
-                contentSlides[currentSlide % contentSlides.length].classList.add('active');
+            phrases[phraseIndex].classList.add('active');
+            if (contentSlides[currentSlide]) {
+                contentSlides[currentSlide].classList.add('active');
             }
         }
         setInterval(nextSlide, 5000);
