@@ -534,13 +534,13 @@
     <header class="hero">
         <div class="carousel-container">
             <div class="carousel-slide active"
-                style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_carousel_1_light_1775554967986.png');">
+                style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_bg_1.png');">
             </div>
             <div class="carousel-slide"
-                style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_carousel_2_light_1775554989045.png');">
+                style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_bg_2.png');">
             </div>
             <div class="carousel-slide"
-                style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_carousel_3_light_1775555009695.png');">
+                style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_bg_3.png');">
             </div>
         </div>
 
@@ -729,20 +729,22 @@
         function handleRegistration(event) {
             event.preventDefault();
             const lang = localStorage.getItem('malea_lang') || 'fr';
-            const name = document.getElementById('reg-name').value;
-            const email = document.getElementById('reg-email').value;
+            const name = document.getElementById('reg-name').value || "";
+            const email = document.getElementById('reg-email').value || "";
             
-            // Fetch translated templates
-            let subjectTemplate = translations[lang]["mail-subject"];
-            let bodyTemplate = translations[lang]["mail-body"];
+            // Fetch translated templates with fallbacks to avoid crashes
+            let subjectTemplate = (translations[lang] && translations[lang]["mail-subject"]) 
+                || "Inscription Campagne Test Android - Malea";
+            let bodyTemplate = (translations[lang] && translations[lang]["mail-body"]) 
+                || "Bonjour,\n\nJe souhaite m'inscrire à la campagne de test Android.\n\nNom: {name}\nEmail: {email}";
             
-            // Replace placeholders
+            // Replace placeholders safely
             const subject = encodeURIComponent(subjectTemplate);
             const body = encodeURIComponent(bodyTemplate.replace("{name}", name).replace("{email}", email));
             
             const mailtoUrl = `mailto:dipitay@gmail.com?subject=${subject}&body=${body}`;
             
-            // Robust way to trigger mailto: works better across different browsers
+            // Robust way to trigger mailto
             const link = document.createElement('a');
             link.href = mailtoUrl;
             document.body.appendChild(link);
