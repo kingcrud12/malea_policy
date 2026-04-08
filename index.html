@@ -145,16 +145,84 @@
             opacity: 1;
         }
 
-        .hero-content {
-            z-index: 1;
-            max-width: 900px;
-            padding: 0 20px;
-            animation: fadeInBody 1s ease-out;
+        .hero-content-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        @keyframes fadeInBody {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero-content-slide {
+            position: absolute;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+            pointer-events: none;
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .hero-content-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+            position: relative;
+        }
+
+        /* --- FORM STYLES --- */
+        .registration-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 40px;
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.05);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .registration-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 15px;
+            border: 1px solid var(--border-glass);
+            background: white;
+            font-family: var(--font-main);
+            font-size: 15px;
+            font-weight: 500;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 15px;
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.02);
         }
 
         h1 {
@@ -422,10 +490,25 @@
         }
 
         @media (max-width: 1000px) {
-            .portals-grid, .support-section { grid-template-columns: 1fr; }
-            .maps-showcase { flex-direction: column; padding: 40px; text-align: center; }
-            nav { padding: 15px 20px; }
-            section { padding: 80px 20px; }
+
+            .portals-grid,
+            .support-section {
+                grid-template-columns: 1fr;
+            }
+
+            .maps-showcase {
+                flex-direction: column;
+                padding: 40px;
+                text-align: center;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            section {
+                padding: 80px 20px;
+            }
         }
     </style>
 </head>
@@ -443,23 +526,43 @@
                 <button class="lang-btn" onclick="switchLanguage('fr')" data-lang="fr">FR</button>
                 <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">EN</button>
             </div>
-            <a href="#support" class="btn btn-secondary" style="padding: 8px 16px; font-size: 13px;" data-i18n="nav-support">Assistance</a>
+            <a href="#support" class="btn btn-secondary" style="padding: 8px 16px; font-size: 13px;"
+                data-i18n="nav-support">Assistance</a>
         </div>
     </nav>
 
     <header class="hero">
         <div class="carousel-container">
-            <div class="carousel-slide active" style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_carousel_1_light_1775554967986.png');"></div>
-            <div class="carousel-slide" style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_carousel_2_light_1775554989045.png');"></div>
-            <div class="carousel-slide" style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_carousel_3_light_1775555009695.png');"></div>
+            <div class="carousel-slide active"
+                style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_carousel_1_light_1775554967986.png');">
+            </div>
+            <div class="carousel-slide"
+                style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_carousel_2_light_1775554989045.png');">
+            </div>
+            <div class="carousel-slide"
+                style="background-image: linear-gradient(rgba(255,255,255,0.4), var(--bg-light)), url('hero_carousel_3_light_1775555009695.png');">
+            </div>
         </div>
 
-        <div class="hero-content">
-            <h1 data-i18n="hero-title">La ville,<br>tout autour de vous.</h1>
-            <p data-i18n="hero-subtitle">Retrouvez tous les commerces et professionnels à proximité. Découvrez votre ville autrement avec une expérience fluide et intuitive.</p>
-            <div class="cta-group">
-                <a href="#" class="btn btn-primary">App Store</a>
-                <a href="#" class="btn btn-secondary">Google Play</a>
+        <div class="hero-content-wrapper">
+            <!-- Slide 1: Main Marketing -->
+            <div class="hero-content-slide active">
+                <h1 data-i18n="hero-title">La ville,<br>tout autour de vous.</h1>
+                <p data-i18n="hero-subtitle">Retrouvez tous les commerces et professionnels à proximité. Découvrez votre
+                    ville autrement avec une expérience fluide et intuitive.</p>
+                <div class="cta-group">
+                    <a href="#" class="btn btn-primary">App Store</a>
+                    <a href="#" class="btn btn-secondary">Google Play</a>
+                </div>
+            </div>
+
+            <!-- Slide 2: Android Test Campaign Announcement -->
+            <div class="hero-content-slide">
+                <h1 data-i18n="hero-test-title">Campagne de tests Maléa</h1>
+                <p data-i18n="hero-test-subtitle">Rejoignez notre programme beta pour façonner le futur de votre ville.</p>
+                <div class="cta-group">
+                    <a href="#register-section" class="btn btn-primary" data-i18n="hero-test-cta">Inscrivez-vous</a>
+                </div>
             </div>
         </div>
 
@@ -513,7 +616,8 @@
         <div class="maps-showcase">
             <div class="maps-text">
                 <h2 data-i18n="map-section-title">La ville en temps réel</h2>
-                <p data-i18n="map-section-desc" style="margin-bottom: 30px;">L'intégration Google Maps vous permet une visualisation instantanée de tout ce qui vous entoure.</p>
+                <p data-i18n="map-section-desc" style="margin-bottom: 30px;">L'intégration Google Maps vous permet une
+                    visualisation instantanée de tout ce qui vous entoure.</p>
                 <a href="#" class="btn btn-primary" data-i18n="map-btn-search">Rechercher dans cette zone</a>
             </div>
             <div class="maps-image">
@@ -543,9 +647,23 @@
             </div>
             <div class="support-cta">
                 <h3 data-i18n="cat-pro-title">Professionnels</h3>
-                <p style="margin-bottom: 30px; opacity: 0.8;" data-i18n="portal-subtitle">Tout ce dont vous avez besoin, des commerces de bouche aux experts indépendants, à portée de main.</p>
-                <a href="mailto:support@malea.app" class="btn btn-secondary" style="border-color: white; color: white;" data-i18n="nav-contact">Contactez-nous</a>
+                <p style="margin-bottom: 30px; opacity: 0.8;" data-i18n="portal-subtitle">Tout ce dont vous avez besoin,
+                    des commerces de bouche aux experts indépendants, à portée de main.</p>
+                <a href="mailto:support@malea.app" class="btn btn-secondary" style="border-color: white; color: white;"
+                    data-i18n="nav-contact">Contactez-nous</a>
             </div>
+        </div>
+    </section>
+
+    <section id="register-section" style="background-color: var(--bg-soft); padding: 100px 20px;">
+        <div class="registration-card" style="margin: 0 auto; background: white;">
+            <h2 data-i18n="android-test-title" style="font-size: 32px; margin-bottom: 20px; text-align: center;">Testez la version Android</h2>
+            <p data-i18n="android-test-subtitle" style="font-size: 16px; margin-bottom: 30px; text-align: center;">Rejoignez notre campagne de test exclusive.</p>
+            <form class="registration-form" onsubmit="handleRegistration(event)">
+                <input type="text" id="reg-name" class="form-input" data-i18n-placeholder="form-name" placeholder="Votre nom" required>
+                <input type="email" id="reg-email" class="form-input" data-i18n-placeholder="form-email" placeholder="Votre adresse email" required>
+                <button type="submit" class="btn-submit" data-i18n="android-test-btn">S'inscrire au test</button>
+            </form>
         </div>
     </section>
 
@@ -572,8 +690,10 @@
                 </ul>
             </div>
         </div>
-        <div style="width: 100%; border-top: 1px solid var(--border-glass); padding-top: 30px; display: flex; justify-content: space-between; align-items: center;">
-            <p style="font-size: 13px; color: var(--text-secondary);">&copy; 2026 Malea App. <span data-i18n="footer-rights">Tous droits réservés.</span></p>
+        <div
+            style="width: 100%; border-top: 1px solid var(--border-glass); padding-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+            <p style="font-size: 13px; color: var(--text-secondary);">&copy; 2026 Malea App. <span
+                    data-i18n="footer-rights">Tous droits réservés.</span></p>
         </div>
     </footer>
 
@@ -582,15 +702,47 @@
         // Carousel Logic
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
+        const contentSlides = document.querySelectorAll('.hero-content-slide');
         const phrases = document.querySelectorAll('.catchy-phrase');
+
         function nextSlide() {
+            // Remove active from current
             slides[currentSlide].classList.remove('active');
             phrases[currentSlide].classList.remove('active');
+            if (contentSlides[currentSlide % contentSlides.length]) {
+                contentSlides[currentSlide % contentSlides.length].classList.remove('active');
+            }
+
+            // Increment
             currentSlide = (currentSlide + 1) % slides.length;
+
+            // Add active to next
             slides[currentSlide].classList.add('active');
             phrases[currentSlide].classList.add('active');
+            if (contentSlides[currentSlide % contentSlides.length]) {
+                contentSlides[currentSlide % contentSlides.length].classList.add('active');
+            }
         }
         setInterval(nextSlide, 5000);
+
+        // Form Submission Handler
+        function handleRegistration(event) {
+            event.preventDefault();
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            
+            const subject = encodeURIComponent("Inscription Campagne Test Android - Malea");
+            const body = encodeURIComponent(`Bonjour,\n\nJe souhaite m'inscrire à la campagne de test Android.\n\nNom: ${name}\nEmail: ${email}`);
+            
+            const mailtoUrl = `mailto:dipitay@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Robust way to trigger mailto: works better across different browsers
+            const link = document.createElement('a');
+            link.href = mailtoUrl;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     </script>
 </body>
 

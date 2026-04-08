@@ -44,6 +44,15 @@ const translations = {
 
         "footer-catchy": "Redéfinissez votre façon de vivre la ville avec Malea.",
         "footer-rights": "Tous droits réservés.",
+        
+        "android-test-title": "Testez la version Android",
+        "android-test-subtitle": "Rejoignez notre campagne de test exclusive et aidez-nous à perfectionner Malea.",
+        "android-test-btn": "S'inscrire au test",
+        "hero-test-title": "Campagne de tests Maléa",
+        "hero-test-subtitle": "Rejoignez notre programme beta pour façonner le futur de votre ville.",
+        "hero-test-cta": "Inscrivez-vous",
+        "form-name": "Votre nom",
+        "form-email": "Votre adresse email",
 
         // Policy Page
         "index-title": "Politique de Confidentialité | Malea",
@@ -109,6 +118,15 @@ const translations = {
 
         "footer-catchy": "Redefine the way you experience the city with Malea.",
         "footer-rights": "All rights reserved.",
+        
+        "android-test-title": "Join the Android Beta Test",
+        "android-test-subtitle": "Be among the first to experience Malea on Android and help us improve.",
+        "android-test-btn": "Join the test",
+        "hero-test-title": "Maléa Test Campaign",
+        "hero-test-subtitle": "Join our beta program and help shape the future of your city.",
+        "hero-test-cta": "Register now",
+        "form-name": "Your name",
+        "form-email": "Your email address",
 
         // Policy Page
         "index-title": "Privacy Policy | Malea",
@@ -130,3 +148,40 @@ const translations = {
         "cgu-version": "Version 1.0 — 2026",
     }
 };
+
+function applyTranslations(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+        }
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+            el.setAttribute('placeholder', translations[lang][key]);
+        }
+    });
+
+    const pageTitleKey = document.body.getAttribute('data-i18n-page-title');
+    if (pageTitleKey && translations[lang] && translations[lang][pageTitleKey]) {
+        document.title = translations[lang][pageTitleKey];
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    document.documentElement.lang = lang;
+}
+
+function switchLanguage(lang) {
+    localStorage.setItem('malea_lang', lang);
+    applyTranslations(lang);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('malea_lang') || (navigator.language.startsWith('en') ? 'en' : 'fr');
+    applyTranslations(savedLang);
+});
