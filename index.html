@@ -728,11 +728,17 @@
         // Form Submission Handler
         function handleRegistration(event) {
             event.preventDefault();
+            const lang = localStorage.getItem('malea_lang') || 'fr';
             const name = document.getElementById('reg-name').value;
             const email = document.getElementById('reg-email').value;
             
-            const subject = encodeURIComponent("Inscription Campagne Test Android - Malea");
-            const body = encodeURIComponent(`Bonjour,\n\nJe souhaite m'inscrire à la campagne de test Android.\n\nNom: ${name}\nEmail: ${email}`);
+            // Fetch translated templates
+            let subjectTemplate = translations[lang]["mail-subject"];
+            let bodyTemplate = translations[lang]["mail-body"];
+            
+            // Replace placeholders
+            const subject = encodeURIComponent(subjectTemplate);
+            const body = encodeURIComponent(bodyTemplate.replace("{name}", name).replace("{email}", email));
             
             const mailtoUrl = `mailto:dipitay@gmail.com?subject=${subject}&body=${body}`;
             

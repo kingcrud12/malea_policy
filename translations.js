@@ -53,6 +53,8 @@ const translations = {
         "hero-test-cta": "Inscrivez-vous",
         "form-name": "Votre nom",
         "form-email": "Votre adresse email",
+        "mail-subject": "Inscription Campagne Test Android - Malea",
+        "mail-body": "Bonjour,\n\nJe souhaite m'inscrire à la campagne de test Android.\n\nNom: {name}\nEmail: {email}",
 
         // Policy Page
         "index-title": "Politique de Confidentialité | Malea",
@@ -127,6 +129,8 @@ const translations = {
         "hero-test-cta": "Register now",
         "form-name": "Your name",
         "form-email": "Your email address",
+        "mail-subject": "Register for Android Beta Test - Malea",
+        "mail-body": "Hello,\n\nI would like to join the Android beta test program.\n\nName: {name}\nEmail: {email}",
 
         // Policy Page
         "index-title": "Privacy Policy | Malea",
