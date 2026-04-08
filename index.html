@@ -646,9 +646,9 @@
         <div class="registration-card" style="margin: 0 auto; background: white;">
             <h2 data-i18n="android-test-title" style="font-size: 32px; margin-bottom: 20px; text-align: center;">Testez la version Android</h2>
             <p data-i18n="android-test-subtitle" style="font-size: 16px; margin-bottom: 30px; text-align: center;">Rejoignez notre campagne de test exclusive.</p>
-            <form class="registration-form" onsubmit="handleRegistration(event)">
-                <input type="text" id="reg-name" class="form-input" data-i18n-placeholder="form-name" placeholder="Votre nom" required>
-                <input type="email" id="reg-email" class="form-input" data-i18n-placeholder="form-email" placeholder="Votre adresse email" required>
+            <form action="https://formspree.io/f/manrbred" method="POST" class="registration-form">
+                <input type="text" name="name" id="reg-name" class="form-input" data-i18n-placeholder="form-name" placeholder="Votre nom" required>
+                <input type="email" name="_replyto" id="reg-email" class="form-input" data-i18n-placeholder="form-email" placeholder="Votre adresse email" required>
                 <button type="submit" class="btn-submit" data-i18n="android-test-btn">S'inscrire au test</button>
             </form>
         </div>
@@ -712,49 +712,6 @@
         }
         setInterval(nextSlide, 5000);
 
-        // Form Submission Handler
-        function handleRegistration(event) {
-            event.preventDefault();
-            
-            // 1. Safety check for translations
-            if (typeof translations === 'undefined') {
-                console.warn("Translations not found, using default language.");
-            }
-
-            const lang = localStorage.getItem('malea_lang') || 'fr';
-            
-            // 2. Safety check for form elements
-            const nameEl = document.getElementById('reg-name');
-            const emailEl = document.getElementById('reg-email');
-            
-            if (!nameEl || !emailEl) {
-                console.error("Form elements not found in the DOM.");
-                return;
-            }
-
-            const name = nameEl.value || "";
-            const email = emailEl.value || "";
-            
-            // 3. Fetch translated templates with deep fallbacks
-            const t = (typeof translations !== 'undefined' && translations[lang]) ? translations[lang] : 
-                     (typeof translations !== 'undefined' ? translations['fr'] : {});
-            
-            const subjectTemplate = t["mail-subject"] || "Inscription Campagne Test Android - Malea";
-            const bodyTemplate = t["mail-body"] || "Bonjour,\n\nJe souhaite m'inscrire à la campagne de test Android.\n\nNom: {name}\nEmail: {email}";
-            
-            // 4. Safe replacement
-            const subject = encodeURIComponent(subjectTemplate);
-            const body = encodeURIComponent(bodyTemplate.replace("{name}", name).replace("{email}", email));
-            
-            const mailtoUrl = `mailto:dipitay@gmail.com?subject=${subject}&body=${body}`;
-            
-            // 5. Trigger mailto via robust link method
-            const link = document.createElement('a');
-            link.href = mailtoUrl;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
 
         // Scroll Logic for Nav
         window.addEventListener('scroll', () => {
