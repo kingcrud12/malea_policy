@@ -10,10 +10,10 @@ const translations = {
         "landing-title": "Malea | Vos commerces autour de vous",
         "hero-title": "La ville,<br>tout autour de vous.",
         "hero-subtitle": "Retrouvez tous les commerces et professionnels à proximité. Découvrez votre ville autrement avec une expérience fluide et intuitive.",
-        
+
         "portal-title": "Explorez votre quartier",
         "portal-subtitle": "Tout ce dont vous avez besoin, des commerces de bouche aux experts indépendants, à portée de main.",
-        
+
         "cat-food-title": "Alimentaire",
         "cat-food-desc": "Supermarchés, boulangeries locales et épiceries fines.",
         "cat-tech-title": "High-Tech",
@@ -44,8 +44,8 @@ const translations = {
 
         "footer-catchy": "Redéfinissez votre façon de vivre la ville avec Malea.",
         "footer-rights": "Tous droits réservés.",
-        
-        "android-test-title": "Testez la version Android",
+
+        "android-test-title": "Testez l'application",
         "android-test-subtitle": "Rejoignez notre campagne de test exclusive et aidez-nous à perfectionner Malea.",
         "android-test-btn": "S'inscrire au test",
         "hero-test-title": "Campagne de tests Maléa",
@@ -86,10 +86,10 @@ const translations = {
         "landing-title": "Malea | Shops and pros around you",
         "hero-title": "The city,<br>all around you.",
         "hero-subtitle": "Find all the shops and professionals nearby. Discover your city differently with a smooth and intuitive experience.",
-        
+
         "portal-title": "Explore your neighborhood",
         "portal-subtitle": "Everything you need, from food shops to independent experts, at your fingertips.",
-        
+
         "cat-food-title": "Food & Grocery",
         "cat-food-desc": "Supermarkets, local bakeries, and fine groceries.",
         "cat-tech-title": "High-Tech",
@@ -120,8 +120,8 @@ const translations = {
 
         "footer-catchy": "Redefine the way you experience the city with Malea.",
         "footer-rights": "All rights reserved.",
-        
-        "android-test-title": "Join the Android Beta Test",
+
+        "android-test-title": "Join the Beta Test",
         "android-test-subtitle": "Be among the first to experience Malea on Android and help us improve.",
         "android-test-btn": "Join the test",
         "hero-test-title": "Maléa Test Campaign",
