@@ -109,66 +109,49 @@
 
         /* --- HERO --- */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding-top: 80px;
+            padding: 120px 60px 60px 60px;
             position: relative;
             overflow: hidden;
         }
 
-        .carousel-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .carousel-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
-
-        .carousel-slide.active {
-            opacity: 1;
-        }
-
-        .hero-content-wrapper {
-            position: relative;
-            z-index: 10;
-            width: 100%;
+        .hero-container {
             display: flex;
-            justify-content: center;
+            flex-direction: row;
             align-items: center;
-        }
-
-        .hero-content-slide {
-            position: absolute;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-            pointer-events: none;
+            justify-content: space-between;
+            gap: 60px;
+            max-width: 1200px;
             width: 100%;
-            max-width: 900px;
-            padding: 0 20px;
-            text-align: center;
+            z-index: 10;
         }
 
-        .hero-content-slide.active {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: all;
-            position: relative;
+        .hero-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .hero-text h1 {
+            text-align: left;
+        }
+
+        .hero-text p {
+            text-align: left;
+            margin: 0 0 40px 0;
+        }
+
+        .hero-text .cta-group {
+            justify-content: flex-start;
+        }
+
+        .hero-form {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
         }
 
         /* --- FORM STYLES --- */
@@ -276,30 +259,7 @@
             background: rgba(0, 0, 0, 0.05);
         }
 
-        .carousel-text-overlay {
-            position: absolute;
-            bottom: 60px;
-            width: 100%;
-            text-align: center;
-            z-index: 10;
-        }
 
-        .catchy-phrase {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--accent);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-            position: absolute;
-            width: 100%;
-            left: 0;
-        }
-
-        .catchy-phrase.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
 
         /* --- SECTIONS COMMON --- */
         section {
@@ -489,6 +449,30 @@
 
         @media (max-width: 1000px) {
 
+            .hero {
+                padding: 120px 20px 60px 20px;
+                height: auto;
+            }
+
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .hero-text h1,
+            .hero-text p {
+                text-align: center;
+            }
+
+            .hero-text .cta-group {
+                justify-content: center;
+            }
+
+            .hero-form {
+                justify-content: center;
+            }
+
             .portals-grid,
             .support-section {
                 grid-template-columns: 1fr;
@@ -517,7 +501,7 @@
 
     <nav>
         <a href="index.html" class="logo">
-            <img src="Malea_logo_clean.png" alt="Malea Logo">
+            <img src="Untitled.png" alt="Malea Logo">
         </a>
         <div class="nav-links">
             <div class="lang-switcher">
@@ -530,10 +514,8 @@
     </nav>
 
     <header class="hero">
-
-        <div class="hero-content-wrapper">
-            <!-- Slide 1: Main Marketing -->
-            <div class="hero-content-slide active">
+        <div class="hero-container">
+            <div class="hero-text">
                 <h1 data-i18n="hero-title">La ville,<br>tout autour de vous.</h1>
                 <p data-i18n="hero-subtitle">Retrouvez tous les commerces et professionnels à proximité. Découvrez votre
                     ville autrement avec une expérience fluide et intuitive.</p>
@@ -542,21 +524,22 @@
                     <a href="#" class="btn btn-secondary">Google Play</a>
                 </div>
             </div>
-
-            <!-- Slide 2: Android Test Campaign Announcement -->
-            <div class="hero-content-slide">
-                <h1 data-i18n="hero-test-title">Campagne de tests Maléa</h1>
-                <p data-i18n="hero-test-subtitle">Rejoignez notre programme beta pour façonner le futur de votre ville.</p>
-                <div class="cta-group">
-                    <a href="#register-section" class="btn btn-primary" data-i18n="hero-test-cta">Inscrivez-vous</a>
+            <div class="hero-form">
+                <div class="registration-card" style="max-width: 450px; background: white;">
+                    <h2 data-i18n="android-test-title" style="font-size: 28px; margin-bottom: 10px; text-align: center;">Rejoignez la bêta Android</h2>
+                    <p data-i18n="android-test-subtitle" style="font-size: 15px; margin: 0 0 25px 0; text-align: center; max-width: 100%;">Inscrivez-vous pour tester l'application avant son lancement officiel.</p>
+                    <form action="https://formspree.io/f/manrbred" method="POST" class="registration-form" style="margin-top: 15px;">
+                        <input type="text" name="name" id="reg-name" class="form-input" data-i18n-placeholder="form-name" placeholder="Votre nom" required>
+                        <input type="email" name="_replyto" id="reg-email" class="form-input" data-i18n-placeholder="form-email" placeholder="Votre adresse email" required>
+                        <select name="os" id="reg-os" class="form-input" required style="cursor: pointer; color: #424245;">
+                            <option value="" disabled selected data-i18n="form-os-placeholder">Système d'exploitation</option>
+                            <option value="iOS">iOS (Apple)</option>
+                            <option value="Android">Android</option>
+                        </select>
+                        <button type="submit" class="btn-submit" data-i18n="android-test-btn">S'inscrire au test</button>
+                    </form>
                 </div>
             </div>
-        </div>
-
-        <div class="carousel-text-overlay">
-            <div class="catchy-phrase active" data-i18n="carousel-1">Découvrez votre ville autrement.</div>
-            <div class="catchy-phrase" data-i18n="carousel-2">Vos commerces favoris, partout avec vous.</div>
-            <div class="catchy-phrase" data-i18n="carousel-3">Les meilleurs experts à chaque coin de rue.</div>
         </div>
     </header>
 
@@ -642,22 +625,12 @@
         </div>
     </section>
 
-    <section id="register-section" style="background-color: var(--bg-soft); padding: 100px 20px;">
-        <div class="registration-card" style="margin: 0 auto; background: white;">
-            <h2 data-i18n="android-test-title" style="font-size: 32px; margin-bottom: 20px; text-align: center;">Testez la version Android</h2>
-            <p data-i18n="android-test-subtitle" style="font-size: 16px; margin-bottom: 30px; text-align: center;">Rejoignez notre campagne de test exclusive.</p>
-            <form action="https://formspree.io/f/manrbred" method="POST" class="registration-form">
-                <input type="text" name="name" id="reg-name" class="form-input" data-i18n-placeholder="form-name" placeholder="Votre nom" required>
-                <input type="email" name="_replyto" id="reg-email" class="form-input" data-i18n-placeholder="form-email" placeholder="Votre adresse email" required>
-                <button type="submit" class="btn-submit" data-i18n="android-test-btn">S'inscrire au test</button>
-            </form>
-        </div>
-    </section>
+
 
     <footer>
         <div class="footer-info">
             <a href="index.html" class="logo" style="margin-bottom: 20px;">
-                <img src="Malea_logo_clean.png" alt="Malea Logo">
+                <img src="Untitled.png" alt="Malea Logo">
             </a>
             <p data-i18n="footer-catchy">Redéfinissez votre façon de vivre la ville avec Malea.</p>
         </div>
@@ -686,32 +659,6 @@
 
     <script src="translations.js"></script>
     <script>
-        // Carousel Logic
-        let currentSlide = 0;
-        const contentSlides = document.querySelectorAll('.hero-content-slide');
-        const phrases = document.querySelectorAll('.catchy-phrase');
-
-        function nextSlide() {
-            // Remove active from current
-            phrases[currentSlide].classList.remove('active');
-            if (contentSlides[currentSlide % contentSlides.length]) {
-                contentSlides[currentSlide % contentSlides.length].classList.remove('active');
-            }
-
-            // Increment
-            currentSlide = (currentSlide + 1) % contentSlides.length; // Cycle based on content slides
-            
-            // Adjust phrases index if needed (if length doesn't match)
-            const phraseIndex = currentSlide % phrases.length;
-
-            // Add active to next
-            phrases[phraseIndex].classList.add('active');
-            if (contentSlides[currentSlide]) {
-                contentSlides[currentSlide].classList.add('active');
-            }
-        }
-        setInterval(nextSlide, 5000);
-
 
         // Scroll Logic for Nav
         window.addEventListener('scroll', () => {
