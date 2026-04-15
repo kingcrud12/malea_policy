@@ -8,8 +8,8 @@ const translations = {
 
         // Landing Page (Index)
         "landing-title": "Malea | Vos commerces autour de vous",
-        "hero-title": "La ville,<br>tout autour de vous.",
-        "hero-subtitle": "Retrouvez tous les commerces et professionnels à proximité. Découvrez votre ville autrement avec une expérience fluide et intuitive.",
+        "hero-title": "Découvres <span class='text-highlight'>des coins insolites</span>, élargis ton réseau.",
+        "hero-subtitle": "Malea te connecte à ta ville autrement.",
 
         "portal-title": "Explorez votre quartier",
         "portal-subtitle": "Tout ce dont vous avez besoin, des commerces de bouche aux experts indépendants, à portée de main.",
@@ -53,8 +53,12 @@ const translations = {
         "hero-test-cta": "Inscrivez-vous",
         "form-name": "Votre nom",
         "form-email": "Votre adresse email",
+        "form-os-placeholder": "Système d'exploitation",
         "mail-subject": "Inscription Campagne Test Android - Malea",
         "mail-body": "Bonjour,\n\nJe souhaite m'inscrire à la campagne de test Android.\n\nNom: {name}\nEmail: {email}",
+        "modal-title": "Bientôt sur les stores",
+        "modal-desc": "L'application est en bêta fermée. Inscrivez-vous à la campagne de test ci-dessous pour recevoir votre lien exclusif pour tester l'application !",
+        "modal-btn": "S'inscrire",
 
         // Policy Page
         "index-title": "Politique de Confidentialité | Malea",
@@ -84,8 +88,8 @@ const translations = {
 
         // Landing Page (Index)
         "landing-title": "Malea | Shops and pros around you",
-        "hero-title": "The city,<br>all around you.",
-        "hero-subtitle": "Find all the shops and professionals nearby. Discover your city differently with a smooth and intuitive experience.",
+        "hero-title": "Discover <span class='text-highlight'>unusual spots</span>, expand your network.",
+        "hero-subtitle": "Malea connects you to your city differently.",
 
         "portal-title": "Explore your neighborhood",
         "portal-subtitle": "Everything you need, from food shops to independent experts, at your fingertips.",
@@ -129,8 +133,12 @@ const translations = {
         "hero-test-cta": "Register now",
         "form-name": "Your name",
         "form-email": "Your email address",
+        "form-os-placeholder": "Operating System",
         "mail-subject": "Register for Android Beta Test - Malea",
         "mail-body": "Hello,\n\nI would like to join the Android beta test program.\n\nName: {name}\nEmail: {email}",
+        "modal-title": "Coming soon to stores",
+        "modal-desc": "The app is in closed beta. Join the test campaign below to receive your exclusive link to test the application!",
+        "modal-btn": "Register",
 
         // Policy Page
         "index-title": "Privacy Policy | Malea",
